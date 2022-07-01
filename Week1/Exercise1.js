@@ -60,13 +60,13 @@ const meetingData = [
 
 connection.connect();
 
-const drop_query = "DROP TABLE IF EXISTS invitees, rooms, meetings";
+const drop_query = "DROP TABLE IF EXISTS invitee, room, meeting";
 const create_invitee_table_query =
-  "CREATE TABLE invitees (Invitee_no INT UNIQUE AUTO_INCREMENT, Invitee_Name VARCHAR(100), Invited_By VARCHAR(100), PRIMARY KEY (Invitee_no))";
+  "CREATE TABLE invitee (Invitee_no INT PRIMARY KEY AUTO_INCREMENT, Invitee_Name VARCHAR(100) UNIQUE NOT NULL, Invited_By VARCHAR(100))";
 const create_room_table_query =
-  "CREATE TABLE rooms (Room_no INT UNIQUE AUTO_INCREMENT, Room_Name VARCHAR(100), Floor_Number INT, PRIMARY KEY (Room_no))";
+  "CREATE TABLE room (Room_no INT AUTO_INCREMENT NOT NULL, Room_Name VARCHAR(100) UNIQUE NOT NULL, Floor_Number INT, PRIMARY KEY (Room_no))";
 const create_meeting_table_query =
-  "CREATE TABLE meetings (Meeting_no INT UNIQUE AUTO_INCREMENT, Meeting_title VARCHAR(100), Starting_Time VARCHAR(100), Ending_Time VARCHAR(100), Room_no INT, PRIMARY KEY (Meeting_no))";
+  "CREATE TABLE meeting (Meeting_no INT PRIMARY KEY AUTO_INCREMENT NOT NULL, Meeting_title VARCHAR(100) UNIQUE NOT NULL, Starting_Time DATETIME NOT NULL, Ending_Time DATETIME NOT NULL, Room_no INT, FOREIGN KEY(Room_no) REFERENCES room(Room_no))";
 
 const dropTables = () => {
   connection.query(drop_query, (error, result, fields) => {
@@ -88,7 +88,7 @@ const createTable = () => {
 
 const insertDataIntoInviteeTable = () => {
   inviteData.forEach((data) => {
-    connection.query("INSERT INTO invitees SET ?", data, (err, result) => {
+    connection.query("INSERT INTO invitee SET ?", data, (err, result) => {
       err && console.log(err);
     });
   });
@@ -97,7 +97,7 @@ const insertDataIntoInviteeTable = () => {
 
 const insertDataIntoRoomTable = () => {
   roomData.forEach((data) => {
-    connection.query("INSERT INTO rooms SET ?", data, (err, result) => {
+    connection.query("INSERT INTO room SET ?", data, (err, result) => {
       err && console.log(err);
     });
   });
@@ -106,7 +106,7 @@ const insertDataIntoRoomTable = () => {
 
 const insertDataIntoMeetingTable = () => {
   meetingData.forEach((data) => {
-    connection.query("INSERT INTO meetings SET ?", data, (err, result) => {
+    connection.query("INSERT INTO meeting SET ?", data, (err, result) => {
       err && console.log(err);
     });
   });
