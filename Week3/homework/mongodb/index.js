@@ -107,7 +107,7 @@ async function updateEpisodeExercises(client) {
     .collection("bob_ross_episodes")
     .updateOne(
       { title: "BLUE RIDGE FALLERS" },
-      { $set: { title: "BLUE RIDGE FALLERS" } }
+      { $set: { title: "BLUE RIDGE FALLS" } }
     );
 
   console.log(
@@ -126,7 +126,7 @@ async function updateEpisodeExercises(client) {
     );
 
   console.log(
-    `Ran a command to update all the BUSHES to BUSH and it updated ${updateBush} episodes`
+    `Ran a command to update all the BUSHES to BUSH and it updated ${updateBush.modifiedCount} episodes`
   );
 }
 
@@ -142,7 +142,7 @@ async function deleteEpisodeExercise(client) {
     .deleteOne({ episode: "S31E14" });
 
   console.log(
-    `Ran a command to delete episode and it deleted ${deleteEpisode} episodes`
+    `Ran a command to delete episode and it deleted ${deleteEpisode.deletedCount} episodes`
   );
 }
 
