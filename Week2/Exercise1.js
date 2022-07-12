@@ -20,7 +20,7 @@ function seedDatabase() {
   const CREATE_AUTHORS_TABLE = `
     CREATE TABLE IF NOT EXISTS authors (
         author_no int not null AUTO_INCREMENT, 
-        author_name varchar(100), 
+        author_name varchar(100) NOT NULL, 
         university varchar(200), 
         date_of_birth date, 
         h_index int, 

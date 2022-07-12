@@ -18,8 +18,8 @@ function seedDatabase() {
   const CREATE_RESEARCH_PAPERS_TABLE = `
     CREATE TABLE IF NOT EXISTS research_papers (
         paper_id int not null AUTO_INCREMENT, 
-        paper_title varchar(200), 
-        published_on varchar(200),
+        paper_title varchar(200)NOT NULL UNIQUE, 
+        published_on DATETIME NOT NULL,
         publish_year year,
         constraint primary key(paper_id)
     );`;
@@ -50,7 +50,8 @@ function seedDatabase() {
               paper_id int not null,
               author_id int not null,
               constraint fk_author_id foreign key (author_id) references authors(author_no),
-              constraint fk_paper_id foreign key (paper_id) references research_papers(paper_id)
+              constraint fk_paper_id foreign key (paper_id) references research_papers(paper_id),
+              PRIMARY KEY(author_no,paper_id)
           );`;
 
   const INSERT_INTO_JOINT_TABLE = `
