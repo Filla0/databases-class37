@@ -6,6 +6,7 @@ const data = require("./data.json");
  *
  * @param {MongoClient} client - The client that is connected to your database
  */
+
 const seedDatabase = async (client) => {
   const hasCollection = await client
     .db("databaseWeek3")
