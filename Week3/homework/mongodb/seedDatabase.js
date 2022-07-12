@@ -1,4 +1,5 @@
 const data = require("./data.json");
+const { MongoClient } = require("mongodb");
 
 /**
  * This function will drop and recreate the collection of sample data in our csv file.
@@ -6,6 +7,7 @@ const data = require("./data.json");
  *
  * @param {MongoClient} client - The client that is connected to your database
  */
+
 const seedDatabase = async (client) => {
   const hasCollection = await client
     .db("databaseWeek3")
