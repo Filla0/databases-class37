@@ -1,0 +1,15 @@
+{
+  "name": "transaction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "transaction.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
