@@ -6,7 +6,7 @@ dinner_date (values should be the same kind or type) dates here are written in d
 
 What entities do you recognize that could be extracted?
 Member
-Date
+Dinner
 Venue
 Food
 
